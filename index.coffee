@@ -3,11 +3,13 @@ module.exports = (emailOptions, sendgridOptions)->
   #sendgridOptions: {username:"good for development", password:"$heroku config", onSendError:function(message){}}
   SendGrid = require('sendgrid').SendGrid
   sendgrid = new SendGrid process.env.SENDGRID_USERNAME || sendGridOptions["username"],  process.env.SENDGRID_PASSWORD || sendgridOptions["password"]
+
   objToString = (obj) ->
     str = ""
     for p of obj
       str += p + "::" + obj[p] + "\n"  if obj.hasOwnProperty(p)
     str
+
   errToHTML = (err)->
     stack = (err.stack || '')
     .split('\n').slice(1)
@@ -20,7 +22,7 @@ module.exports = (emailOptions, sendgridOptions)->
       to: emailOptions["to"]
       from: emailOptions["from"]
       subject: emailOptions["subject"]
-      html: "<h3>Error:</h3><pre>#{err}</pre><h3>Request:</h3><pre>#{errToHTML {stack:objToString(req)}}</pre><h3>Stack:</h3><pre>#{errToHTML err}</pre>"
+      html: "<h3>Error:</h3><pre>#{err}</pre><h3>Stack:</h3><pre>#{errToHTML err}</pre><h3>Request:</h3><pre>#{errToHTML {stack:objToString(req)}}</pre>"
     , (success, message)->
       if !success
         onSendError(message)
