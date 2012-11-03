@@ -2,7 +2,7 @@ module.exports = (emailOptions, sendgridOptions)->
   #emailOptions: {to:"to@example.com", from:"from@example.com", subject:"your subject"}
   #sendgridOptions: {username:"good for development", password:"$heroku config", onSendError:function(message){}}
   SendGrid = require('sendgrid').SendGrid
-  sendgrid = new SendGrid process.env.SENDGRID_USERNAME || sendGridOptions["username"],  process.env.SENDGRID_PASSWORD || sendgridOptions["password"]
+  sendgrid = new SendGrid process.env.SENDGRID_USERNAME || sendgridOptions["username"],  process.env.SENDGRID_PASSWORD || sendgridOptions["password"]
 
   objToString = (obj) ->
     str = ""
