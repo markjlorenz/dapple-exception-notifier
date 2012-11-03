@@ -4,7 +4,7 @@
   module.exports = function(emailOptions, sendgridOptions) {
     var SendGrid, errToHTML, objToString, sendgrid;
     SendGrid = require('sendgrid').SendGrid;
-    sendgrid = new SendGrid(process.env.SENDGRID_USERNAME || sendGridOptions["username"], process.env.SENDGRID_PASSWORD || sendgridOptions["password"]);
+    sendgrid = new SendGrid(process.env.SENDGRID_USERNAME || sendgridOptions["username"], process.env.SENDGRID_PASSWORD || sendgridOptions["password"]);
     objToString = function(obj) {
       var p, str;
       str = "";
