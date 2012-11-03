@@ -1,4 +1,4 @@
-module.exports = (emailOptions, sendgridOptions)->
+module.exports = (emailOptions, sendgridOptions, errCallback)->
   #emailOptions: {to:"to@example.com", from:"from@example.com", subject:"your subject"}
   #sendgridOptions: {username:"good for development", password:"$heroku config", onSendError:function(message){}}
   SendGrid = require('sendgrid').SendGrid
@@ -25,5 +25,5 @@ module.exports = (emailOptions, sendgridOptions)->
       html: "<h3>Error:</h3><pre>#{err}</pre><h3>Stack:</h3><pre>#{errToHTML err}</pre><h3>Request:</h3><pre>#{errToHTML {stack:objToString(req)}}</pre>"
     , (success, message)->
       if !success
-        onSendError(message)
+        errCallback(message)
     next(err)
