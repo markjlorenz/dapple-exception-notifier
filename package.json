@@ -7,19 +7,18 @@
     "start": "node app"
   },
   "engines": {
-    "node": "0.8.x",
+    "node": "0.6.x",
     "npm": "1.1.x"
   },
   "dependencies": {
-    "express": "3.0.0rc4",
-    "jade": "*"
+    "express": ""
   },
   "devDependencies": {},
   "optionalDependencies": {},
   "author": "Mark J. Lorenz <markjlorenz@dapplebeforedawn.com>",
   "description": "emails a stack trace on application error",
   "repository": {
-    "url": ""
+    "url": "https://github.com/dapplebeforedawn/dapple-exception-notifier/"
   },
   "main": "index"
 }
