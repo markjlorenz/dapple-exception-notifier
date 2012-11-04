@@ -22,7 +22,7 @@ module.exports = (emailOptions, sendgridOptions, errCallback)->
       to: emailOptions["to"]
       from: emailOptions["from"]
       subject: emailOptions["subject"]
-      html: "<h3>Error:</h3><pre>#{err}</pre><h3>Stack:</h3><pre>#{errToHTML err}</pre><h3>Request:</h3><pre>#{errToHTML {stack:objToString(req)}}</pre>"
+      html: "<h2>#{req.headers.host}</h2><h3>Error:</h3><pre>#{err}</pre><h3>Stack:</h3><pre>#{errToHTML err}</pre><h3>Request:</h3><pre>#{errToHTML {stack:objToString(req)}}</pre>"
     , (success, message)->
       if !success
         errCallback(message)
